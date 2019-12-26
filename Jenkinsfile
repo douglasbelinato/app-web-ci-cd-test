@@ -11,4 +11,8 @@ node {
     stage('Checkout') {
         checkout scm
     }
+
+    stage('Maven Build') {
+        sh "mvn clean package"
+    }
 }
