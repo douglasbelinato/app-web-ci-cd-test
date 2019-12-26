@@ -15,4 +15,14 @@ node {
     stage('Maven Build') {
         sh "mvn clean package"
     }
+
+    stage('Docker Build Image') {
+        imageBuild(CONTAINER_NAME, CONTAINER_TAG)
+    }
+}
+
+def imageBuild(containerName, tag) {
+    sh "docker build -t $containerName:$tag -t $containerName --pull --no-cache ."
+    echo "Build da imagem Docker finalizado com sucesso!"
+    sh "docker images"
 }
