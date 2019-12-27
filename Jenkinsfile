@@ -36,7 +36,7 @@ def imageBuild(containerName, tag) {
 
 def imagePush(containerName, tag, dockerUser, dockerPassword) {
     sh "docker login -u $dockerUser -p $dockerPassword"
-    sh "docker tag $containerName:$tag $docker $dockerUser/$containerName:$tag"
+    sh "docker tag $containerName:$tag $dockerUser/$containerName:$tag"
     sh "docker push $dockerUser/$containerName:$tag"
-    sh "Push da imagem finalizado com sucesso!"
+    echo "Push da imagem finalizado com sucesso!"
 }
