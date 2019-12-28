@@ -26,6 +26,10 @@ node {
             imagePush(CONTAINER_NAME, CONTAINER_TAG, USERNAME, PASSWORD)
         }
     }
+
+    stage('K8s') {
+        sh "kubectl version"
+    }
 }
 
 def imageBuild(containerName, tag) {
